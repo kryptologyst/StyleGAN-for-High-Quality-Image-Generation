@@ -1,0 +1,55 @@
+# StyleGAN Configuration
+# Default configuration for StyleGAN training
+
+# Model parameters
+model:
+  z_dim: 512
+  w_dim: 512
+  img_channels: 3
+  img_size: 64
+  mapping_layers: 8
+
+# Training parameters
+training:
+  batch_size: 64
+  num_epochs: 100
+  lr: 0.0002
+  beta1: 0.5
+  beta2: 0.999
+  lambda_gp: 10.0
+  d_steps: 1
+  g_steps: 1
+  ema_decay: 0.999
+
+# Data parameters
+data:
+  dataset: "cifar10"  # Options: cifar10, mnist
+  num_workers: 4
+  pin_memory: true
+
+# Evaluation parameters
+evaluation:
+  fid_batch_size: 1000
+  num_fid_samples: 10000
+  save_samples_every: 10
+  num_sample_images: 64
+
+# Paths
+paths:
+  data_dir: "./data"
+  checkpoint_dir: "./assets/checkpoints"
+  sample_dir: "./assets/samples"
+  log_dir: "./logs"
+
+# Device settings
+device:
+  use_cuda: true
+  use_mps: true  # For Apple Silicon
+  deterministic: true
+  seed: 42
+
+# Logging
+logging:
+  log_level: "INFO"
+  log_every_n_steps: 100
+  save_checkpoint_every: 50
